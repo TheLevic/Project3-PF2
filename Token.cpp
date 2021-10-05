@@ -14,6 +14,11 @@ Token::Token(string s){
         priority = -1;
     }
     //Check if s is an identifier (string that starts with a letter)
+        //check isdigit
+        //check if it's a letter
+        //check if it's a digit or a letter
+
+
 
     //Check if s is an integer (Make sure it doesn't start with 0)
     else if(isdigit(s[0])){
@@ -69,7 +74,7 @@ Token::Token(string s){
 }
 
 void Token::set(string s){
-
+    //Set this equal to the above methods
 }
 
 int Token::value() const{
