@@ -14,7 +14,7 @@ Token::Token(string s){
         priority = -1;
     }
     //Check if s is an identifier (string that starts with a letter)
-    if (s[0] != NULL && isdigit(s[0]) == false && s[0] != 0 && isalpha(s[0])){
+    if (s[0] != NULL && isalpha(s[0])){
         type = Identifier;
         priority = -1;
     }
