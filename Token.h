@@ -32,6 +32,9 @@ private:
     Token_type type; //Stores the type
     string token; //Stores the token
     int priority; //Stores priority of token when it is an operator/parentheses
+
+    //Methods to use for our member functions
+    void checkString(string s);
 };
 
 #endif /*TOKEN_H*/

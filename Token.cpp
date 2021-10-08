@@ -1,18 +1,13 @@
 #include "Token.h"
-
-Token::Token(){
-    type = INVALID;
-    token = "";
-    priority = -1;
-}
-
-Token::Token(string s){
-    token = s;
-    //if s is empty ""
+//Method to use in our constructor and setter
+void Token::checkString(string s){
+    //Check if it's empty
     if (s.empty()){
         type = INVALID;
         priority = -1;
     }
+
+
     //Check if s is an identifier (string that starts with a letter)
     if (s[0] != NULL && isalpha(s[0])){
         type = Identifier;
@@ -72,9 +67,24 @@ Token::Token(string s){
     }
 }
 
-void Token::set(string s){
-    //Set this equal to the above methods
 
+
+Token::Token(){
+    type = INVALID;
+    token = "";
+    priority = -1;
+}
+
+Token::Token(string s){
+    token = s;
+    checkString(s);
+}
+
+
+//Do this. Ask if I should turn the above checks into functions and use the same stuff in this method!
+void Token::set(string s){
+    token = s;
+    checkString(s);
 }
 
 int Token::value() const{
@@ -103,9 +113,17 @@ void Token::display() const{
         case 2:
             nameType = "Operators";
             break;
-        //Keep going
+        case 3:
+            nameType = "EqualSign";
+            break;
+        case 4:
+            nameType = "OpenBrace";
+        case 5:
+            nameType = "CloseBrace";
+        case 6:
+            nameType = "Invalid";
     }
-    cout << "type = " << type << endl;
+    cout << "type = " << nameType << endl;
     cout << "token = " << token << " (value is " << value() << ")" << endl;
     cout << "priority = " << priority << endl;
 }
