@@ -81,7 +81,6 @@ Token::Token(string s){
 }
 
 
-//Do this. Ask if I should turn the above checks into functions and use the same stuff in this method!
 void Token::set(string s){
     token = s;
     checkString(s);
@@ -102,7 +101,7 @@ int Token::value() const{
 }
 
 void Token::display() const{
-    string nameType;
+    string nameType = "";
     switch(type){
         case 0:
             nameType = "Identifier";
@@ -126,6 +125,7 @@ void Token::display() const{
     cout << "type = " << nameType << endl;
     cout << "token = " << token << " (value is " << value() << ")" << endl;
     cout << "priority = " << priority << endl;
+    cout << "------------------------------------------------------" << endl;
 }
 
 Token_type Token::get_type()const{

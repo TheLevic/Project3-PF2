@@ -27,6 +27,10 @@ public:
 
 private:
     string original;
+    vector<Token> tokenized;
+    vector<Token> postfix;
+    bool valid;
+    Exp_type type;
 
 
 };

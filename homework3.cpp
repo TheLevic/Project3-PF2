@@ -1,8 +1,11 @@
 #include "Token.h"
 
 int main(){
-    string something = "(";
-    Token j;
-    j.set(something);
+    string one = "a";
+    string two = "-";
+    string three = "*";
+    string four = "/";
+
+    Token j(one);
     j.display();
 }
