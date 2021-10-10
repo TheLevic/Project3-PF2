@@ -15,11 +15,11 @@ class Expression{
 
 public:
     //Constructors
-    Expression();
-    Expression(const string &s);
-    void set(const string& s);
-    void display() const;
-    string getoriginal() const;
+    Expression(); //Done
+    Expression(const string &s); //Need to do
+    void set(const string& s); //Need to do 
+    void display() const; //Done
+    string getoriginal() const; 
     vector<Token> gettokenized() const;
 
 

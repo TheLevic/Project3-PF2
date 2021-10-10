@@ -1,4 +1,5 @@
 #include "Token.h"
+#include "Expression.h"
 
 int main(){
     string one = "a";
@@ -8,4 +9,7 @@ int main(){
 
     Token j(one);
     j.display();
+
+    Expression object;
+    object.display();
 }

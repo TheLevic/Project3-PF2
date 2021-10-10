@@ -20,8 +20,11 @@ Expression::Expression(const string& s){
 
 void Expression::display() const{
     cout << "original = " << original << endl;
-    //How do I print out the value of tokenized?
-    cout << "number of tokens = " << endl;
+    cout << "tokenized = ";
+    for (int i = 0; i < tokenized.size(); i++){
+        tokenized.at(i).display();
+    }
+    cout << endl << "number of tokens = " << endl;
     cout << "postfix = " << endl;
     cout << "valid = " << valid << endl;
     cout << "type = " << type << endl;
