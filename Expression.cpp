@@ -1,6 +1,19 @@
 #include "Expression.h"
 #include "Token.h"
 
+
+//For ease of use in my methods I created this
+bool isSpecial(const string& s, int i){
+    if(s[i] == '(' || s[i] == ')' || s[i] == '+' || s[i] == '-' || s[i] == '*' || s[i] == '/' || s[i] == '='){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+
+
 Expression::Expression(){
     original = ""; //Making sure original is Empty
     type = Bad; //Setting type to bad
@@ -9,29 +22,33 @@ Expression::Expression(){
     postfix.clear(); //Making sure the inital vector is empty
 }
 
+
 Expression::Expression(const string& s){
     set(s); //Using the set method
 }
+
 
 void Expression::set(const string& s){
     //We need to separate each character based on the definition of a token (tokens are separated by spaces or special characters);
     //Once the first token is found, add it into tokenized
     //After adding into tokenized, repeat this process from the next position
     //at which we stopped at until finding the terminating NULL character (hence the do while loop)
-    
+
     original = s; //Setting original
     string tmp; //Temporary string to hold values
+    tmp.clear(); //Making sure tmp is clear.
+    tokenized.clear();
     int i = 0;
     do
     {
         
-        while (s[i] != '(' && s[i] != ')' && s[i] != '+' && s[i] != '-' && s[i] != '*' && s[i] != '/' && s[i] != '=' && s[i] != ' ' && s[i] != NULL){ //If it's an ordinary character
+        if (isSpecial(s,i) == false && s[i] != ' ' && s[i] != NULL){ //If it's an ordinary character
             tmp =  tmp + s[i]; //Setting tmp = to itself + the next char
             i++; //moving on
         }
 
-        while(s[i] == '(' || s[i] == ')' || s[i] == '+' || s[i] == '-' || s[i] == '*' || s[i] == '/' || s[i] == '=' && s[i] != NULL){//If character is special
-            if(tmp.empty() != true){
+        if(isSpecial(s, i) == true){ //If character is special
+            if(tmp.empty() != true){ //if tmp isn't empty
                 tmp = tmp + ';'; //Adding a semi-colon to the end of tmp for tokenizing purposes.
                 tokenized.push_back(tmp); //Add current value to vector
                 tmp.clear(); //Clear the vector
@@ -39,6 +56,12 @@ void Expression::set(const string& s){
                 tokenized.push_back(tmp); //Adding tmp to vector
                 tmp.clear(); //Clearing tmp
                 i++; //Moving on
+            }
+            else{ //If tmp is empty
+                tmp = s[i] + ';';
+                tokenized.push_back(tmp);
+                tmp.clear();
+                i++;
             }
         
         }
@@ -56,6 +79,8 @@ void Expression::set(const string& s){
         }
 
         if(s[i] == NULL){ //If it's a NULL character
+            tmp = tmp + ';';
+            tokenized.push_back(tmp);
             break; //Break the loops
         }
 
