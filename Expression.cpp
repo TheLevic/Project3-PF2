@@ -10,6 +10,10 @@ Expression::Expression(){
 }
 
 Expression::Expression(const string& s){
+    set(s);
+}
+
+void Expression::set(const string& s){
     original = s;
     Token check(s);
     if (check.get_type() != INVALID){
@@ -23,7 +27,7 @@ void Expression::display() const{
     cout << "original = " << original << endl;
     cout << "tokenized = ";
     for (int i = 0; i < tokenized.size(); i++){
-        tokenized.at(i).display();
+       cout << tokenized.at(i).get_token();
     }
     cout << endl << "number of tokens = " << endl;
     cout << "postfix = " << endl;
