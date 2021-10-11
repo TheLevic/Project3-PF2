@@ -7,9 +7,9 @@ int main(){
     string three = "*";
     string four = "/";
 
-    Token j(one);
-    j.display();
+    //Token j(one);
+    //j.display();
 
-    Expression object;
+    Expression object(one);
     object.display();
 }

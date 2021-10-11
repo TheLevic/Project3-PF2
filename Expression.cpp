@@ -10,10 +10,11 @@ Expression::Expression(){
 }
 
 Expression::Expression(const string& s){
-
-
-
-
+    original = s;
+    Token check(s);
+    if (check.get_type() != INVALID){
+        tokenized.push_back(check);
+    }
 }
 
 
