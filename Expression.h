@@ -16,7 +16,7 @@ class Expression{
 public:
     //Constructors
     Expression(); //Done
-    Expression(const string &s); //Need to do
+    Expression(const string &s); //Done
     void set(const string& s); //Need to do 
     void display() const; //Done
     string getoriginal() const;  //Done
@@ -31,6 +31,7 @@ private:
     vector<Token> postfix;
     bool valid;
     Exp_type type;
+    int numTokens;
 
 
 };
