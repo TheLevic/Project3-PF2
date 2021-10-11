@@ -34,11 +34,12 @@ void Expression::set(const string& s){
     //After adding into tokenized, repeat this process from the next position
     //at which we stopped at until finding the terminating NULL character (hence the do while loop)
 
+    string semi = ";";
     original = s; //Setting original
     string tmp; //Temporary string to hold values
     tmp.clear(); //Making sure tmp is clear.
-    tokenized.clear();
-    int i = 0;
+    tokenized.clear(); //Making sure the vector is clear
+    int i = 0; //Keeping our place
     do
     {
         
@@ -47,28 +48,29 @@ void Expression::set(const string& s){
             i++; //moving on
         }
 
-        if(isSpecial(s, i) == true){ //If character is special
-            if(tmp.empty() != true){ //if tmp isn't empty
-                tmp = tmp + ';'; //Adding a semi-colon to the end of tmp for tokenizing purposes.
-                tokenized.push_back(tmp); //Add current value to vector
-                tmp.clear(); //Clear the vector
-                tmp = s[i] + ';'; //Now tmp = a special character + a semi colon.
+        if (isSpecial(s,i) == true){
+            if (tmp.empty() != true){ //If tmp is not empty
+                tmp = tmp + semi; //Adding semi colon to string before the special character
                 tokenized.push_back(tmp); //Adding tmp to vector
+                tmp.clear(); //Clear tmp
+                tmp = s[i]; //Setting tmp = to our char
+                tmp = tmp + semi; //Adding a semi colon to our char
+                tokenized.push_back(tmp); //Adding tmp to our vector
                 tmp.clear(); //Clearing tmp
                 i++; //Moving on
             }
-            else{ //If tmp is empty
-                tmp = s[i] + ';';
-                tokenized.push_back(tmp);
-                tmp.clear();
-                i++;
+            else if(tmp.empty() == true){ // if Tmp is empty
+                tmp = s[i]; //Setting tmp qual to our char
+                tmp = tmp + semi; //Adding semi colon to tmp
+                tokenized.push_back(tmp); //Adding to vector
+                tmp.clear(); //Clearing tmp
+                i++; //Moving on
             }
-        
         }
 
         if(s[i] == ' '){ //If s is equal to space
             if (tmp.empty() != true){ //And if tmp is not empty
-                tmp = tmp + ';'; //Replacing the space with a semi colon
+                tmp = tmp + semi; //Replacing the space with a semi colon
                 tokenized.push_back(tmp); //Adding tmp to our vector
                 tmp.clear(); //clearing tmp
                 i++; //Moving on
@@ -77,14 +79,6 @@ void Expression::set(const string& s){
                 i++; //Move on
             }
         }
-
-        if(s[i] == NULL){ //If it's a NULL character
-            tmp = tmp + ';';
-            tokenized.push_back(tmp);
-            break; //Break the loops
-        }
-
-
     } while (s[i] != NULL);
 }
 
