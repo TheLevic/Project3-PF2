@@ -1,6 +1,8 @@
 #include "Expression.h"
 #include "Token.h"
 
+enum SpecialTokens {special = '(' || ')' || '+' || '-' || '*' || '/' || '='}; //Creating a special type to compare to
+
 Expression::Expression(){
     original = ""; //Making sure original is Empty
     type = Bad; //Setting type to bad
@@ -15,15 +17,14 @@ Expression::Expression(const string& s){
 
 void Expression::set(const string& s){
     original = s;
-    Token check(original);
+    string tmp; //Temporary string to hold values
     int count = 0;
-    for (count; count < check.get_token().size(); count++){
-        int pos = check.get_token().find(' '); //Search through the Token and find the spaces
-        check.get_token().replace(pos, 1, ";"); //Replace the spaces with the ; character
-    }
-    //Now we need to separate the tokens
     
+    //We need to separate each character based on the definition of a token (tokens are separated by spaces or special characters);
 
+    //Once the first token is found, add it into tokenized
+    //After adding into tokenized, repeat this process from the position
+    //at which we stopped at until finding the terminating NULL character
 }
 
 
