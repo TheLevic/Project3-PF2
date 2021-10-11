@@ -5,8 +5,8 @@ Expression::Expression(){
     original = ""; //Making sure original is Empty
     type = Bad; //Setting type to bad
     valid = false; //Setting valid to be false initially
-    tokenized = {}; //Making sure the inital vector is empty
-    postfix = {}; //Making sure the inital vector is empty
+    tokenized.clear(); //Making sure the inital vector is empty
+    postfix.clear(); //Making sure the inital vector is empty
 }
 
 Expression::Expression(const string& s){
