@@ -31,3 +31,9 @@ void Expression::display() const{
     cout << "----------------------------------------" << endl;
 }
 
+string Expression::getoriginal() const{
+    return original;
+}
+vector<Token> Expression::gettokenized() const{
+    return tokenized;
+}

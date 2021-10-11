@@ -19,8 +19,8 @@ public:
     Expression(const string &s); //Need to do
     void set(const string& s); //Need to do 
     void display() const; //Done
-    string getoriginal() const; 
-    vector<Token> gettokenized() const;
+    string getoriginal() const;  //Done
+    vector<Token> gettokenized() const; //Done
 
 
 
