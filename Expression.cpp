@@ -79,6 +79,17 @@ void Expression::set(const string& s){
                 i++; //Move on
             }
         }
+        if(s[i] == NULL){ //Once we reach the NULL char
+            if (tmp.empty() != true){ //If tmp is not empty
+                tmp = tmp + semi; //Adding semi colon to tmp
+                tokenized.push_back(tmp); //Adding tmp to vector
+                tmp.clear(); //Clearing tmp
+                break;//Exiting loop
+            } 
+            else{
+                break; //Exiting loop if tmp is empty
+            }
+        }
     } while (s[i] != NULL);
 }
 
