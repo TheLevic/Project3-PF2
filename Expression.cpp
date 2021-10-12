@@ -58,7 +58,7 @@ void Expression::set(const string& s){
                 i++; //Moving on
             }
             else if(tmp.empty() == true){ // if Tmp is empty
-                tmp = s[i]; //Setting tmp qual to our char
+                tmp = s[i]; //Setting tmp to our char
                 tokenized.push_back(tmp); //Adding to vector
                 tmp.clear(); //Clearing tmp
                 i++; //Moving on
