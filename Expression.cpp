@@ -50,18 +50,15 @@ void Expression::set(const string& s){
 
         if (isSpecial(s,i) == true){
             if (tmp.empty() != true){ //If tmp is not empty
-                tmp = tmp + semi; //Adding semi colon to string before the special character
                 tokenized.push_back(tmp); //Adding tmp to vector
                 tmp.clear(); //Clear tmp
                 tmp = s[i]; //Setting tmp = to our char
-                tmp = tmp + semi; //Adding a semi colon to our char
                 tokenized.push_back(tmp); //Adding tmp to our vector
                 tmp.clear(); //Clearing tmp
                 i++; //Moving on
             }
             else if(tmp.empty() == true){ // if Tmp is empty
                 tmp = s[i]; //Setting tmp qual to our char
-                tmp = tmp + semi; //Adding semi colon to tmp
                 tokenized.push_back(tmp); //Adding to vector
                 tmp.clear(); //Clearing tmp
                 i++; //Moving on
@@ -70,7 +67,6 @@ void Expression::set(const string& s){
 
         if(s[i] == ' '){ //If s is equal to space
             if (tmp.empty() != true){ //And if tmp is not empty
-                tmp = tmp + semi; //Replacing the space with a semi colon
                 tokenized.push_back(tmp); //Adding tmp to our vector
                 tmp.clear(); //clearing tmp
                 i++; //Moving on
@@ -81,7 +77,6 @@ void Expression::set(const string& s){
         }
         if(s[i] == NULL){ //Once we reach the NULL char
             if (tmp.empty() != true){ //If tmp is not empty
-                tmp = tmp + semi; //Adding semi colon to tmp
                 tokenized.push_back(tmp); //Adding tmp to vector
                 tmp.clear(); //Clearing tmp
                 break;//Exiting loop
@@ -96,10 +91,11 @@ void Expression::set(const string& s){
 
 
 void Expression::display() const{
+    string semi = ";";
     cout << "original = " << original << endl;
     cout << "tokenized = ";
     for (int i = 0; i < tokenized.size(); i++){
-       cout << tokenized.at(i).get_token();
+       cout << tokenized.at(i).get_token() + semi;
     }
     cout << endl << "number of tokens = " << tokenized.size() << endl;
     cout << "postfix = " << endl;
