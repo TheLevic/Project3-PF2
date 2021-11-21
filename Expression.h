@@ -20,7 +20,7 @@ public:
     void set(const string& s); //Need to do 
     void display() const; //Done
     string getoriginal() const;  //Done
-    vector<Token> gettokenized() const; //Done
+    vector<Token> get_tokenized() const; //Done
 
 
 
@@ -31,7 +31,7 @@ private:
     vector<Token> postfix;
     bool valid;
     Exp_type type;
-    int numTokens;
+    //int numTokens;
 
 
 };

@@ -43,7 +43,7 @@ void Expression::set(const string& s){
     do
     {
         
-        if (isSpecial(s,i) == false && s[i] != ' ' && s[i] != NULL){ //If it's an ordinary character
+        if (isSpecial(s,i) == false && s[i] != ' ' && s[i] != '\0'){ //If it's an ordinary character
             tmp =  tmp + s[i]; //Setting tmp = to itself + the next char
             i++; //moving on
         }
@@ -75,7 +75,7 @@ void Expression::set(const string& s){
                 i++; //Move on
             }
         }
-        if(s[i] == NULL){ //Once we reach the NULL char
+        if(s[i] == '\0'){ //Once we reach the NULL char
             if (tmp.empty() != true){ //If tmp is not empty
                 tokenized.push_back(tmp); //Adding tmp to vector
                 tmp.clear(); //Clearing tmp
@@ -85,7 +85,7 @@ void Expression::set(const string& s){
                 break; //Exiting loop if tmp is empty
             }
         }
-    } while (s[i] != NULL);
+    } while (s[i] != '\0');
 }
 
 
@@ -97,7 +97,7 @@ void Expression::display() const{
     for (int i = 0; i < tokenized.size(); i++){
        cout << tokenized.at(i).get_token() + semi;
     }
-    cout << endl << "number of tokens = " << tokenized.size() << endl;
+    cout << endl;
     cout << "postfix = " << endl;
     cout << "valid = " << valid << endl;
     cout << "type = " << type << endl;
@@ -107,6 +107,6 @@ void Expression::display() const{
 string Expression::getoriginal() const{
     return original;
 }
-vector<Token> Expression::gettokenized() const{
+vector<Token> Expression::get_tokenized() const{
     return tokenized;
 }

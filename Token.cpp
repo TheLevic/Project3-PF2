@@ -9,7 +9,7 @@ void Token::checkString(string s){
 
 
     //Check if s is an identifier (string that starts with a letter)
-    if (s[0] != NULL && isalpha(s[0])){
+    if (s[0] != '\0' && isalpha(s[0])){
         type = Identifier;
         priority = -1;
     }
@@ -72,7 +72,7 @@ void Token::checkString(string s){
 Token::Token(){
     type = INVALID;
     token = "";
-    priority = -1;
+    checkString(token);
 }
 
 Token::Token(string s){
@@ -120,12 +120,11 @@ void Token::display() const{
         case 5:
             nameType = "CloseBrace";
         case 6:
-            nameType = "Invalid";
+            nameType = "INVALID";
     }
     cout << "type = " << nameType << endl;
-    cout << "token = " << token << " (value is " << value() << ")" << endl;
+    cout << "token = " << token << "(value is " << value() << ")" << endl;
     cout << "priority = " << priority << endl;
-    cout << "------------------------------------------------------" << endl;
 }
 
 Token_type Token::get_type()const{
