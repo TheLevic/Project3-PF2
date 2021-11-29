@@ -88,6 +88,12 @@ void Expression::set(const string& s){
     } while (s[i] != '\0');
 }
 
+string Expression::getoriginal() const{
+    return original;
+}
+vector<Token> Expression::get_tokenized() const{
+    return tokenized;
+}
 
 
 void Expression::display() const{
@@ -99,14 +105,18 @@ void Expression::display() const{
     }
     cout << endl;
     cout << "postfix = " << endl;
-    cout << "valid = " << valid << endl;
-    cout << "type = " << type << endl;
-    cout << "----------------------------------------" << endl;
+    cout << "valid = " << boolalpha << valid << endl;
+    cout << "type = ";
+    if (type == 2){
+        cout << "Bad" << endl;
+    }
+    else if (type == 1){
+        cout << "Arithmetic" << endl;
+    }
+    else if (type == 0){
+        cout << "Assignment" << endl;
+    }
+    cout << endl;
 }
 
-string Expression::getoriginal() const{
-    return original;
-}
-vector<Token> Expression::get_tokenized() const{
-    return tokenized;
-}
+

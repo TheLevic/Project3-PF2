@@ -9,7 +9,7 @@ void Token::checkString(string s){
 
 
     //Check if s is an identifier (string that starts with a letter)
-    if (s[0] != '\0' && isalpha(s[0])){
+    if (s[0] != '\0' && isalpha(s[0])){ //I think I need to check each letter to make sure that there is not a special char
         type = Identifier;
         priority = -1;
     }
@@ -18,6 +18,10 @@ void Token::checkString(string s){
     else if(isdigit(s[0])){
         bool number = true;
         for(int i = 0; i < s.length(); i++){
+            if (s[i] == '0' && s.length() > 1){
+                number = false;
+                break;
+            }
             if(isdigit(s[i])){
                 continue;
             }
